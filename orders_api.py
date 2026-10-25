@@ -19,5 +19,3 @@ class OrdersApi:
     @allure.step('Получение списка заказов')
     def get_orders_list(params=None):
         return requests.get(f'{data.BASE_URL}{data.ORDER_LIST_PATH}', params=params, timeout=10)
-
-    442354
