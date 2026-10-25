@@ -15,14 +15,11 @@ class TestCreateOrder:
         pytest.param(['BLACK', 'GREY'], id='оба цвета'),
         pytest.param(None, id='без цвета'),
     ])
-    def test_create_order_with_colors_returns_track(self, colors, orders_to_cancel):
+    def test_create_order_with_colors_returns_track(self, colors, created_orders):
         response = OrdersApi.create(helpers.generate_order_payload(colors))
-        body = response.json()
-
-        track = body.get('track')
-        if track is not None:
-            orders_to_cancel.append(track)
+        created_orders.append(response)
 
         assert response.status_code == 201, response.text
+        body = response.json()
         assert 'track' in body, f'В ответе нет track: {body}'
         assert isinstance(body['track'], int)

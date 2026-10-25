@@ -27,3 +27,6 @@ CREATE_COURIER_ERROR_EXISTING_LOGIN_MESSAGE = {'code': 409, 'message': 'Этот
 LOGIN_COURIER_ERROR_WRONG_DATA = {'code': 404, 'message': 'Учетная запись не найдена'}
 # Логин курьера без логина или пароля
 LOGIN_COURIER_ERROR_NOT_ENOUGH_DATA_MESSAGE = {'code': 400, 'message': 'Недостаточно данных для входа'}
+
+# Таймаут запросов к сервису, секунды
+REQUEST_TIMEOUT = 30

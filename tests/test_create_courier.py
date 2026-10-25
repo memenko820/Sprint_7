@@ -30,7 +30,7 @@ class TestCreateCourier:
         pytest.param('password', id='без пароля'),
     ])
     def test_create_courier_without_required_field_error(self, new_courier_payload, missing_field):
-        payload = {key: value for key, value in new_courier_payload.items() if key != missing_field}
+        payload = helpers.remove_field(new_courier_payload, missing_field)
         response = CourierApi.create(payload)
 
         assert response.status_code == 400

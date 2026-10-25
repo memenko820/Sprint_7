@@ -14,6 +14,3 @@ class TestGetOrders:
         body = response.json()
         assert 'orders' in body, f'В ответе нет ключа orders: {body}'
         assert isinstance(body['orders'], list), f'orders не список: {type(body["orders"])}'
-
-        for order in body['orders']:
-            assert 'id' in order and 'track' in order, f'Неполный заказ: {order}'

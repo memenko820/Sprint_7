@@ -40,7 +40,7 @@ class TestLoginCourier:
     ])
     def test_login_courier_without_required_field_returns_bad_request(self, courier, missing_field):
         credentials = helpers.get_credentials(courier)
-        payload = {key: value for key, value in credentials.items() if key != missing_field}
+        payload = helpers.remove_field(helpers.get_credentials(courier), missing_field)
         response = CourierApi.login(payload)
 
         assert response.status_code == 400, response.text
